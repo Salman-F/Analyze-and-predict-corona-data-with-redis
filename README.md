@@ -3,7 +3,7 @@
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/Salman-F/Analyze-and-predict-corona-data-with-redis)
 ![Github license](https://img.shields.io/github/license/Salman-F/Analyze-and-predict-corona-data-with-redis) 
-![Github Linked in](https://img.shields.io/badge/https://dev.to/envoy_/150-badges-for-github-pnk?&logo=linkedin&logoColor=white)
+![Github Linked in](https://img.shields.io/badge/LinkedIn-0077B5?&logo=linkedin&logoColor=white)
 
 Project name is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
 
