@@ -1,4 +1,4 @@
-# Analyze and predict crona data with redis and machine learning
+# Analyze and predict corona data with redis and machine learning
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/Salman-F/Analyze-and-predict-corona-data-with-redis)
