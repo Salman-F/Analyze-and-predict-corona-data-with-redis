@@ -35,9 +35,10 @@ class FbProphetForecast(AbstractForecast):
         # Prophet algorithm needs dataframe to be in specific order with specific name
         self.redisData = self.redisData.rename(columns={"data":"y", "date":"ds"})        
         self.redisData = self.redisData[["y", "ds"]]
-
+        # creates model
         model = Prophet(interval_width=0.95, daily_seasonality=True, yearly_seasonality=True,weekly_seasonality=True)        
         # changepoints=str(formatDf['ds'].iloc[-1]).split(' ')[0]
+        # fitting model and make prediction
         model.fit(self.redisData)
         future = model.make_future_dataframe(periods=self.future,freq='D')
         forecast = model.predict(future)
@@ -45,6 +46,7 @@ class FbProphetForecast(AbstractForecast):
         plt1 = model.plot(forecast)
         plt.get_current_fig_manager().canvas.set_window_title(self.titel)
         plt.get_current_fig_manager().resize(644,480)
+
         self.result = forecast
 
     def showResult(self):

@@ -25,13 +25,14 @@ class HWForecast(AbstractForecast):
         """
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
+
         for i in range (lenOfData):
             npArray[0][i] = self.redisData["data"][i]
         
         self.extendOrgData(npArray[0])
-        
+        # create model and fit model
         model = ExponentialSmoothing(npArray[0], seasonal_periods=12, trend="add", seasonal="mul")
         model_fit = model.fit()        
-
+        # make prediction 
         predictYhat = model_fit.predict(1, (npArray.size + self.future))
         self.result = predictYhat

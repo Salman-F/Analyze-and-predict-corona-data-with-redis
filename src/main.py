@@ -10,7 +10,7 @@
 TODO:
     * Put data in redis server with queue // In work... Not Possible
     * build hasehs in redis server // Done
-    * analyse the data          // In work
+    * analyse the data          // Done
     * build prophet     //Done -- suppress loginfo 
     * fft               //Done
     * machine learning //Done
@@ -24,18 +24,29 @@ from FourierForecast import *
 from SARIMAForecast import *
 from Controller import *
 from HoltWitnersForecast import *
-from AnalyzeLockdown import *
+from AnalyzeCoronaData import *
 import matplotlib.pyplot as plt
 import os
 
 def main():
+    """main
+        main function controls program flow.
+        creates objects and calls needed methods.
+    """
     ###This Variable declares how many days should be forecasted
-    ############################################################
+    ###And if Plots are shown###################################
+    
     FutureCast = 10
+    showAnalyzedData = True
+    showForecastPlots = True
+    
     ############################################################
     ############################################################
+    
+    # Window to chose german state to analyze
     window = ControllerMVC()
     state = window.run()
+
     # Builds Connection to redis server
     try:
         redisDB = RedisClient(_state=state)
@@ -50,31 +61,38 @@ def main():
         print(f"Somethin went wrong: {generalError}")
         return
     
+    if showAnalyzedData == True:
+        AnObj = AnalyzeCorona(redisDB)
+        AnObj.coronaPeaksIncident()
+        AnObj.averageCoronaIncident()
+
     HWTitel = "Holt Winter's Exponenial Smoothing"
     FFTTitel = "Fast Fourier Transformation"
     SARIMATitel = "SARIMA machine learning"
     FBProphetTitel = "FB Prophet Forecast"
 
+    # Create objects and call forecast function
+
     HWObj = HWForecast(redisDB, FutureCast, HWTitel)
     HWObj.getForecast()
 
-    #fourierTransObj = FourierForecast(redisDB, FutureCast, FFTTitel)
-    #fourierTransObj.getForecast()
+    fourierTransObj = FourierForecast(redisDB, FutureCast, FFTTitel)
+    fourierTransObj.getForecast()
 
-    #sarimaObj = SARIMAForecast(redisDB, FutureCast, SARIMATitel)
-    #sarimaObj.getForecast()
+    sarimaObj = SARIMAForecast(redisDB, FutureCast, SARIMATitel)
+    sarimaObj.getForecast()
 
     fbProphetObj = FbProphetForecast(redisDB, FutureCast, FBProphetTitel)
     fbProphetObj.getForecast()
 
-    #HWObj.showResult()
-    #fourierTransObj.showResult()
-    #sarimaObj.showResult()
-    #fbProphetObj.showResult()
+    if showForecastPlots == True:
+        HWObj.showResult()
+        fourierTransObj.showResult()
+        sarimaObj.showResult()
+        fbProphetObj.showResult()
+        plt.show()
+    
     os.system('cls' if os.name == 'nt' else 'clear')
-    #AnObj = Lockdown(redisDB, 100, 200)
-    #AnObj.lockdownPhases()
-    plt.show()
     redisDB.flushDB()
 
 if __name__ == "__main__":

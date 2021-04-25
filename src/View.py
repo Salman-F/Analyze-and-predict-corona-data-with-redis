@@ -35,6 +35,10 @@ class ViewMVC():
     def plot(self, values):
         """plot
             Plots all Buttons on the given frame and performs action on click. Defined in command=
+        
+        Source:
+            * https://www.geeksforgeeks.org/radiobutton-in-tkinter-python/ (changes made and logic in command= added)
+        
         Args:
             values (dict): Contain the information the be displayed
         """

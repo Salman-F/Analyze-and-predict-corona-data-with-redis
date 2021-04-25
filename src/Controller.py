@@ -29,7 +29,9 @@ class ControllerMVC():
             str: Contains the state the user wants to analyze the corona data from
         """
         self.master.title("Choose the state you are interested in")
+        # creates valuse
         self.model.fillValues()
+        # creates view
         self.view.plot(self.model.getValues())
         self.master.mainloop()
         return self.view.getRetVal()

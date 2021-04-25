@@ -69,7 +69,7 @@ class RedisClient():
             Iterrates through all rows in the csv file and makes a hashset and stores the data in the connected redis server.
 
         Raises:
-            Exception: Should rais an Exception if the given URL is faulty or invalid.
+            Exception: Should raise an Exception if the given URL is faulty or invalid.
         """
         # Checking if the given url is working (maybe the site was deleted)
         try:
@@ -135,6 +135,7 @@ class RedisClient():
         Returns:
             DataFrame: Includes data fetched from database to use with further algorithms.
         """
+        # Create dataframe and fetch value for wished state from redis
         df = pd.DataFrame(columns=["date", "data"])
         for key in self.redClient.keys():
             value = self.redClient.hget(key, self.state)

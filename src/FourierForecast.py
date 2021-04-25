@@ -27,6 +27,7 @@ class FourierForecast(AbstractForecast):
         """
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
+        # Iterate through the fetched redisData and filter all values
         for i in range (lenOfData):
             npArray[0][i] = self.redisData["data"][i]
         self.extendOrgData(npArray[0])
@@ -53,10 +54,10 @@ class FourierForecast(AbstractForecast):
         t = np.arange(0, n)
         p = np.polyfit(t, x, 1)         # find linear trend in x
         x_notrend = x - p[0] * t        # detrended x
-        x_freqdom = fft(x_notrend)  # detrended x in frequency domain
-        f = fftfreq(n)              # frequencies
+        x_freqdom = fft(x_notrend)      # detrended x in frequency domain
+        f = fftfreq(n)                  # frequencies
         indexes = range(n)
-        # sort indexes by frequency, lower -> higher
+                                        # sort indexes by frequency, lower -> higher
         indexes = list(range(n))
     
         t = np.arange(0, n + n_predict)

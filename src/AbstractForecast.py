@@ -81,7 +81,8 @@ class AbstractForecast(ABC):
         """
         plot = plt.figure()
         plt.get_current_fig_manager().canvas.set_window_title(self.titel)
-        dateAxes = pd.date_range(start=self.redisData["date"][0], periods=len(self.redisData)+self.future, freq='D')
-        plt.plot(dateAxes, self.orgDataExtended, 'b', label = 'daily changes', linewidth = 1.5)        
+        # Create date values for the complete data including the forecastet data
+        dateAxes = pd.date_range(start=self.redisData["date"][0], periods=len(self.redisData)+self.future, freq='D')       
         plt.plot(dateAxes, self.result,"r", label = 'Predicted Values')
+        plt.plot(dateAxes, self.orgDataExtended, 'b', label = 'daily changes', linewidth = 1.5) 
         plt.legend()

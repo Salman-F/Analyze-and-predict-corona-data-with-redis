@@ -26,6 +26,7 @@ class SARIMAForecast(AbstractForecast):
         """
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
+        # Iterate through the fetched redisData and filter all values
         for i in range (lenOfData):
             npArray[0][i] = self.redisData["data"][i]
         
