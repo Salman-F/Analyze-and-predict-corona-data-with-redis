@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+**/.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

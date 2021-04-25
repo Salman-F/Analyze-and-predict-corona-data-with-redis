@@ -7,7 +7,6 @@
         * version: 0.0.1 Beta- free
 """
 from tkinter import *
-
 class ViewMVC():
     """ViewMVC
         Creates the Buttons that should be shown in the mein frame

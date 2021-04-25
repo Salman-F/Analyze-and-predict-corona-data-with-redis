@@ -14,7 +14,7 @@ TODO:
     * build prophet     //Done -- suppress loginfo 
     * fft               //Done
     * machine learning //Done
-    * Doc Strings 
+    * Doc Strings // Add while coding
     * Read me
     * tests unittests
 """
@@ -27,7 +27,6 @@ from HoltWitnersForecast import *
 from AnalyzeLockdown import *
 import matplotlib.pyplot as plt
 import os
-import time
 
 def main():
     ###This Variable declares how many days should be forecasted
@@ -35,11 +34,8 @@ def main():
     FutureCast = 10
     ############################################################
     ############################################################
-    #window = ControllerMVC()
-    #state = window.run()
-    state = ""
-    if state == "":
-        state = "DE-BW"
+    window = ControllerMVC()
+    state = window.run()
     # Builds Connection to redis server
     try:
         redisDB = RedisClient(_state=state)
@@ -59,8 +55,8 @@ def main():
     SARIMATitel = "SARIMA machine learning"
     FBProphetTitel = "FB Prophet Forecast"
 
-    #HWObj = HWForecast(redisDB, FutureCast, HWTitel)
-    #HWObj.getForecast()
+    HWObj = HWForecast(redisDB, FutureCast, HWTitel)
+    HWObj.getForecast()
 
     #fourierTransObj = FourierForecast(redisDB, FutureCast, FFTTitel)
     #fourierTransObj.getForecast()

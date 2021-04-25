@@ -18,6 +18,7 @@ from rq import Queue
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 class RedisClient():
     """RedisClient
@@ -119,9 +120,10 @@ class RedisClient():
                 # Convertion to integer with numpy at the end
                 # Replace all zeros to the value that was given the day before
                 # The following if statement set the first entry to 1 if it is 0 so the replacement can be efficient
-                if df[colm][0] == 0:
-                    df[colm][0] = 1
+                if df.loc[0, colm] == 0:
+                    df.loc[0, colm] = 1
                 df[colm]= df[colm].diff().fillna(df[colm]).apply(np.int64).replace(to_replace=0, method="ffill").clip(lower=1)
+
         return df
 
     def getRedisData(self):
