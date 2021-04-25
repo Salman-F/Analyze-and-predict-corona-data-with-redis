@@ -1,11 +1,28 @@
-import warnings; 
-warnings.filterwarnings("ignore")
+"""HoltWitnersForecast
+    Holt Winter's Exponential Smoothing machine learning algorithm to forecast corona cases.
+    
+    Attributes:
+        * name: SALFIC
+        * date: 24.04.2021
+        * version: 0.0.1 Beta- free
+"""
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import numpy as np
 from AbstractForecast import *
 
 class HWForecast(AbstractForecast):
+    """HWForecast
+        Contains the algorithm to create and fit a model to forecast data.
+
+    Args:
+        AbstractForecast (ABC): Abstract class this class inherits from. Implementation of abstract funtions is needed.
+    """
     def getForecast(self):
+        """getForecast
+            Predicts future values with the fitted ExponentialSmoothing model.
+            Therfore a numpyArray containing all y values is created and taken to create the model.
+            The result is stored in the class variable: result.
+        """
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
         for i in range (lenOfData):

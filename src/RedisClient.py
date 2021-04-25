@@ -9,11 +9,8 @@
         * date: 24.04.2021
         * version: 0.0.1 Beta- free
 
-Example:
-    None
-
 TODO:
-    * Queue
+    * Queue for backround jobs // Not possible because of bugs: https://github.com/rq/rq/issues/758
 """
 
 import redis
@@ -68,6 +65,7 @@ class RedisClient():
     def fillRedisDatabase(self):
         """fillRedisDatabase
             Reads csv File with pandas libary.
+            Iterrates through all rows in the csv file and makes a hashset and stores the data in the connected redis server.
 
         Raises:
             Exception: Should rais an Exception if the given URL is faulty or invalid.
@@ -92,7 +90,6 @@ class RedisClient():
             Makes some little changes to the read Dataframe.
             Given Database includes total cases but we need all new cases per day.
 
-
         Args:
             df (DataFrame): Includes the read data from the given URL in fillRedisDatabae
 
@@ -101,7 +98,8 @@ class RedisClient():
         
         Test:
             * Rename succesful?
-            * date column real datetime?
+            * date column from dtype datetime?
+            * No 0 values in the data and no negativ values?
         """
         # Deleting Time Stamp from date
         df["time_iso8601"] = pd.to_datetime(df["time_iso8601"]).dt.date
@@ -128,19 +126,22 @@ class RedisClient():
 
     def getRedisData(self):
         """getRedisData
-            Fetches data from database for the state the user wishes
+            Fetches data from database for the state the user wishes.
+            Builds a Dataframe with the fetched data from the databse to use in further algorithms.
+            Dtypes of the column are given and the rows are sorted by the date.
 
         Returns:
-            DataFrame: Includes data fetched from database to use woth further algorithms
+            DataFrame: Includes data fetched from database to use with further algorithms.
         """
         df = pd.DataFrame(columns=["date", "data"])
         for key in self.redClient.keys():
             value = self.redClient.hget(key, self.state)
-            df2 = pd.DataFrame({"date":[key], "data":[value]})
-            df = df.append(df2, ignore_index=True)
+            newRow = {"date":key, "data":value}
+            df = df.append(newRow, ignore_index=True)
 
         # Converts the fetched date from Redis to a specific datetime
         df["date"] = pd.to_datetime(df["date"])
+        df["data"] = df["data"].astype("int64")
 
         # Sorting by date
         df.sort_values(by=["date"], inplace=True, ascending=True, ignore_index=True)
@@ -150,6 +151,7 @@ class RedisClient():
     def getClient(self):
         """getClient
             Returns Client Object. For direct Communication to the redis server.
+            For Testing reasons to use the rq libary.
 
         Returns:
             Redis Client: Holds the Connection to the redis server.
@@ -163,6 +165,7 @@ class RedisClient():
         """
         self.redClient.flushdb()
 
+#This function should be called by the queue and build the hashset in a job queue
 #def fillEachDate(row, redisHost, redisPort, redisPw):
     #connection = redis.Redis(host=redisHost, port=redisPort, password=redisPw, decode_responses=True)
     #keys = row.keys()

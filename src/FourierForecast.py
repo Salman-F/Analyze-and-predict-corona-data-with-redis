@@ -5,12 +5,6 @@
         * name: SALFIC
         * date: 24.04.2021
         * version: 0.0.1 Beta- free
-
-Example:
-    None
-
-TODO:
-    * 
 """
 from AbstractForecast import *
 import numpy as np
@@ -20,13 +14,16 @@ class FourierForecast(AbstractForecast):
     """FourierForecast
         The FourierForecast predicts future corona values with the implemented fft.
         The given values are analyzed for any characteristics that decsribe the progress of the corona cases.
+        This class is inherited from the AbstractForecast class and needs to implement all abstract methods.
+    
+    Args:
+        AbstractForecast (ABC): Abstract class this class inherits from. Implementation of abstract funtions is needed.
     """
     def getForecast(self):
         """getFFtForecast
-            Executes the FFT Algortihm and prepares data for fft algorithm
-
-        Returns: //////TODO
-            [type]: [description]
+            Prepares data for the FFT algorithm and executes the algorithm.
+            A numpyArray with the y Values of the original corona cases is made and extended to match the predicted values.
+            The Forecasted values are storet in the class variable result
         """
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
@@ -48,8 +45,8 @@ class FourierForecast(AbstractForecast):
             x (numpyArray): Includes all new corona cases per day
             n_predict (int): Describes the number of days the Function should forecast
 
-        Returns://///TODO
-            [type]: [description]
+        Returns:
+            numpyArray: Contains the analyzed data in addition to the forecasted values
         """
         n = x.size
         n_harm = 10                     # number of harmonics in model
