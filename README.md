@@ -37,9 +37,9 @@ To use Analyze and predict corona data with redis and machine learning, follow t
 ```
 Start the main.py folder within a Terminal (default plot settings and forecast treshold are used)
 If you want to disable the plots or forecast more data open the main.py in a IDE.
+```
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/userOptions.png)
 
-```
 
 Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
 
