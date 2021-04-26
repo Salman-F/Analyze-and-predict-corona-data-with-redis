@@ -9,14 +9,8 @@
         
 TODO:
     * Put data in redis server with queue // In work... Not Possible
-    * build hasehs in redis server // Done
-    * analyse the data          // Done
     * build prophet     //Done -- suppress loginfo 
-    * fft               //Done
-    * machine learning //Done
-    * Doc Strings // Add while coding
     * Read me
-    * tests unittests
 """
 from RedisClient import *
 from ProphetForecast import *
@@ -26,27 +20,35 @@ from Controller import *
 from HoltWitnersForecast import *
 from AnalyzeCoronaData import *
 import matplotlib.pyplot as plt
+from unittestsAbstractForecast import *
+from unittestsRedisClient import *
 import os
+import sys
 
-def main():
+def main(args):
     """main
         main function controls program flow.
         creates objects and calls needed methods.
     """
     ###This Variable declares how many days should be forecasted
     ###And if Plots are shown###################################
-    
-    FutureCast = 10
-    showAnalyzedData = True
-    showForecastPlots = True
-    
+    if len(args) > 0 and len(args) < 5:
+        FutureCast = int(args[0])
+        showAnalyzedData = bool(args[1])
+        showForecastPlots = bool(args[2])
+        prophetIncluded = bool(args[3])
+    else:
+        FutureCast = 10
+        showAnalyzedData = True
+        showForecastPlots = True
+        prophetIncluded = True
+
     ############################################################
     ############################################################
     
     # Window to chose german state to analyze
     window = ControllerMVC()
     state = window.run()
-
     # Builds Connection to redis server
     try:
         redisDB = RedisClient(_state=state)
@@ -82,18 +84,35 @@ def main():
     sarimaObj = SARIMAForecast(redisDB, FutureCast, SARIMATitel)
     sarimaObj.getForecast()
 
-    fbProphetObj = FbProphetForecast(redisDB, FutureCast, FBProphetTitel)
-    fbProphetObj.getForecast()
+    if prophetIncluded == True:
+        fbProphetObj = FbProphetForecast(redisDB, FutureCast, FBProphetTitel)
+        fbProphetObj.getForecast()
 
     if showForecastPlots == True:
-        HWObj.showResult()
-        fourierTransObj.showResult()
-        sarimaObj.showResult()
-        fbProphetObj.showResult()
+        # Create subplots for forecasting methods
+        fig, ax = plt.subplots(3)
+        HWObj.showResult(ax,0)
+        fourierTransObj.showResult(ax,1)
+        sarimaObj.showResult(ax,2)
+        # To prevent overlaping of titels
+        plt.tight_layout()
         plt.show()
     
     os.system('cls' if os.name == 'nt' else 'clear')
+    ########################################Test Section
+    ####################################################
+    abstractUnittestObj = TestAbstractForecast(sarimaObj)
+    abstractUnittestObj.testZeroToNan()
+    abstractUnittestObj.testExtensionOrgData(redisDB.getRedisData(), FutureCast)
+
+    redisCliUnittestObj = TestRedisClient(redisDB)
+    redisCliUnittestObj.testFillingDatabase()
+    redisCliUnittestObj.testPreprocessing()
+    redisCliUnittestObj.testGetRedisData()
+    ####################################################
+    ####################################################
     redisDB.flushDB()
 
 if __name__ == "__main__":
-    main()
+    args = sys.argv[1:]
+    main(args)
