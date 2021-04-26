@@ -1,6 +1,5 @@
 # Analyze and predict corona data with redis and machine learning
 
-<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/Salman-F/Analyze-and-predict-corona-data-with-redis)
 ![Github license](https://img.shields.io/github/license/Salman-F/Analyze-and-predict-corona-data-with-redis) 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
@@ -17,16 +16,24 @@ If you have any suggestions for improvement, please feel free to contact me.
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+* You have installed redis on your machine. 
+* You can also run a docker container on your [machine](https://phoenixnap.com/kb/docker-redis) or [raspberryPi](https://thisdavej.com/how-to-install-redis-on-a-raspberry-pi-using-docker/)
 * You have installed the requiered libaries listed in src\requirements.txt
 * To do so you can try `pip install -r requirements.txt`
+* It is recommended to install [fbprophet](https://anaconda.org/conda-forge/fbprophet) via anaconda or via [pip](https://pypi.org/project/fbprophet/)
+```Python
+pip install fbprophet
+conda install -c conda-forge fbprophet
+```
+* This project was tested on python==3.8.0 and it is recommended to use this version
 
 
 ## Installing Analyze and predict corona data with redis and machine learning
 
 To install Analyze and predict corona data with redis and machine learning, follow these steps:
 ```
-..* Download this repository
-..* Unzip the downloaded file
+* Download this repository
+* Unzip the downloaded file
 ```
 
 ## Using Analyze and predict corona data with redis and machine learning
@@ -34,6 +41,8 @@ To install Analyze and predict corona data with redis and machine learning, foll
 To use Analyze and predict corona data with redis and machine learning, follow these steps:
 
 ```
+Start your redis docker container or server.
+Change the parameters in RedisClient.py to the specific information of your redis server.
 Start a terminal within the src folder of this project.
 Type the following command in your teminal with the parameters you want to use.
 Further explanation is given underneath.
