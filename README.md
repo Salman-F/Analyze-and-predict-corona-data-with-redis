@@ -57,7 +57,6 @@ Change the parameters shown in the picture below to your liking.
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/userOptions.png)
 
 
-Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
 
 ## Contributing to Analyze and predict corona data with redis and machine learning
 
