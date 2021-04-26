@@ -38,9 +38,9 @@ To use Analyze and predict corona data with redis and machine learning, follow t
 Start the main.py folder within a Terminal (default plot settings and forecast treshold are used)
 If you want to disable the plots or forecast more data open the main.py in a IDE.
 Change the parameters shown in the picture below to your liking.
-* FutureCast --> Describes the amount of days forecast methods should predict.
-* showAnalyzedData --> Is True or False and decides, if plots regarding analyzing corona data should be shown
-* showForecastPlots --> Is True or False and decides, if plots regarding forecast of corona data should be shown
+- FutureCast --> Describes the amount of days forecast methods should predict.
+- showAnalyzedData --> Is True or False and decides, if plots regarding analyzing corona data should be shown
+- showForecastPlots --> Is True or False and decides, if plots regarding forecast of corona data should be shown
 ```
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/userOptions.png)
 
