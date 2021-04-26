@@ -1,8 +1,8 @@
 """RedisClient
-    Controls all actions to communicate with redis database.
-    This File reads and writes to the database.
-    In most cases the configuration information needs to be adjusted
-    In most cases redisHost = "localhost", redisPw = "", redisPort should be always "6379"
+    * Controls all actions to communicate with redis database.
+    * This File reads and writes to the database.
+    * In most cases the configuration information needs to be adjusted
+    * In most cases redisHost = "localhost", redisPw = "", redisPort should be always "6379"
     
     Attributes:
         * name: SALFIC
@@ -22,9 +22,9 @@ import time
 
 class RedisClient():
     """RedisClient
-        The Redis Client handles all operation regarding the redis database.
-        The databse can be filled with data and data can be fetched from the database.
-        Also some smaller functions like csvPreprocessing are implemented that makes the usage of the databse easier.
+        * The Redis Client handles all operation regarding the redis database.
+        * The databse can be filled with data and data can be fetched from the database.
+        * Also some smaller functions like csvPreprocessing are implemented that makes the usage of the databse easier.
     """
     def __init__(self, _redisHost = "192.168.137.234", _redisPort = "6379", _redisPw = "redis", _state="DE-BW", _url="https://raw.githubusercontent.com/jgehrcke/covid-19-germany-gae/master/cases-rki-by-state.csv"):
         """Inits RedisClient
@@ -45,7 +45,7 @@ class RedisClient():
 
     def connectToRedisDB(self):
         """connecToRedis
-            Builds connection to the existing redis server and throws Execption if no connection can be build
+            * Builds connection to the existing redis server and throws Execption if no connection can be build
 
         Raises:
             Exception: Errormessage for any error raised while trying to connect to redis server
@@ -65,8 +65,8 @@ class RedisClient():
 
     def fillRedisDatabase(self):
         """fillRedisDatabase
-            Reads csv File with pandas libary.
-            Iterrates through all rows in the csv file and makes a hashset and stores the data in the connected redis server.
+            * Reads csv File with pandas libary.
+            * Iterrates through all rows in the csv file and makes a hashset and stores the data in the connected redis server.
 
         Raises:
             Exception: Should raise an Exception if the given URL is faulty or invalid.
@@ -88,8 +88,8 @@ class RedisClient():
 
     def csvPreprocessing(self, df):
         """csvPreprocessing
-            Makes some little changes to the read Dataframe.
-            Given Database includes total cases but we need all new cases per day.
+            * Makes some little changes to the read Dataframe.
+            * Given Database includes total cases but we need all new cases per day.
 
         Args:
             df (DataFrame): Includes the read data from the given URL in fillRedisDatabae
@@ -99,7 +99,6 @@ class RedisClient():
         
         Test:
             * Rename succesful?
-            * date column from dtype datetime?
             * No 0 values in the data and no negativ values?
         """
         # Deleting Time Stamp from date
@@ -128,9 +127,9 @@ class RedisClient():
 
     def getRedisData(self):
         """getRedisData
-            Fetches data from database for the state the user wishes.
-            Builds a Dataframe with the fetched data from the databse to use in further algorithms.
-            Dtypes of the column are given and the rows are sorted by the date.
+            * Fetches data from database for the state the user wishes.
+            * Builds a Dataframe with the fetched data from the databse to use in further algorithms.
+            * Dtypes of the column are given and the rows are sorted by the date.
 
         Returns:
             DataFrame: Includes data fetched from database to use with further algorithms.
@@ -148,13 +147,20 @@ class RedisClient():
 
         # Sorting by date
         df.sort_values(by=["date"], inplace=True, ascending=True, ignore_index=True)
-
         return df
+
+    def getUrl(self):
+        """getUrl
+            * Returns url to data source
+
+        Returns:
+            str: Contains Url to fetched data
+        """
+        return self.url
 
     def getClient(self):
         """getClient
-            Returns Client Object. For direct Communication to the redis server.
-            For Testing reasons to use the rq libary.
+            * Returns Client Object. For direct Communication to the redis server.
 
         Returns:
             Redis Client: Holds the Connection to the redis server.
@@ -163,8 +169,8 @@ class RedisClient():
 
     def flushDB(self):
         """flushDB
-            To delete the whole Database.
-            For Testing reasons.
+            * To delete the whole Database.
+            * For Testing reasons.
         """
         self.redClient.flushdb()
 
