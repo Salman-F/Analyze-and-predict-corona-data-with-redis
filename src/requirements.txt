@@ -1,0 +1,8 @@
+fbprophet==0.7.1
+rq==1.8.0
+pandas==1.2.4
+scipy==1.6.2
+statsmodels==0.12.2
+redis==3.5.3
+matplotlib==3.3.4
+numpy==1.19.2
