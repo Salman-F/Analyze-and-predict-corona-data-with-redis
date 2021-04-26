@@ -1,6 +1,6 @@
 """AnalyzeCoronaData
-    Analyzes corona data with redis as a database.
-    Fetches data from redis database and computes it.
+    * Analyzes corona data with redis as a database.
+    * Fetches data from redis database and computes it.
 """
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -8,12 +8,12 @@ import operator
 
 class AnalyzeCorona():
     """AnalyzeCorona
-        Contains all functions to analyze corona data fetched from redis database.
+        * Contains all functions to analyze corona data fetched from redis database.
     """
     def __init__(self, redisDB):
         """Inits the analyze objekt with the redisClient Object.
-            With the help of the redisClient object we can get the connection to redis.
-            Two parameters are set to store the highest and lowest incident value (in the last 30 days)
+            * With the help of the redisClient object we can get the connection to redis.
+            * Two parameters are set to store the highest and lowest incident value (in the last 30 days)
 
         Args:
             redisDB (RedisClient): RedisClient object containing every important attribute, method for our redis database
@@ -24,8 +24,8 @@ class AnalyzeCorona():
     
     def coronaPeaksIncident(self):
         """coronaPeaksIncident
-            Gets keys from redis database and converts them to datetime to sort them and get the latest entries.
-            The highest and lowest value will be searched in the latest entries.
+            * Gets keys from redis database and converts them to datetime to sort them and get the latest entries.
+            * The highest and lowest value will be searched in the latest entries.
         """
         # Get all keys from redis db->convert them to datetime and sort the pandas Serie
         # Important! Use of keys is not recommand in normal use cases because there can be a lot more keys then in this example
@@ -47,7 +47,7 @@ class AnalyzeCorona():
 
     def averageCoronaIncident(self):
         """averageCoronaIncident
-            Iterates trough all keys and hmset in redis database and calculates the average incident for the recorded time
+            * Iterates trough all keys and hmset in redis database and calculates the average incident for the recorded time
         """
         # Dict for all german states
         states = {"DE-BB" : 0, "DE-BE":0, "DE-BW":0, "DE-BY":0, "DE-HB":0,
@@ -71,6 +71,7 @@ class AnalyzeCorona():
         lowestCorona = f"Lowest incident recorded in {self.lowest[0]} : {self.lowest[1]} new cases (last 30days)"
         textToPrint = highestCorona + lowestCorona
         
+        # Plots result
         plt.bar(states.keys(), yValues, zorder=3)
         plt.title("Average incident cases in Germany")
         plt.xlabel("German states")
