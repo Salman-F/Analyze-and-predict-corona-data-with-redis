@@ -18,9 +18,9 @@ If you have any suggestions for improvement, please feel free to contact me.
 Before you begin, ensure you have met the following requirements:
 * You have installed redis on your machine. 
 * Another option is to run a docker container on your [machine](https://phoenixnap.com/kb/docker-redis) or [raspberryPi](https://thisdavej.com/how-to-install-redis-on-a-raspberry-pi-using-docker/)
-* You have installed the requiered libaries listed in src\requirements.txt
+* You have installed the requiered libaries listed in [src\requirements.txt](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/src/requirements.txt)
 * To do so you can try `pip install -r requirements.txt`
-* It is recommended to install fbprophet via [anaconda](https://anaconda.org/conda-forge/fbprophet) or via [pip](https://pypi.org/project/fbprophet/)
+* It is recommended to install `fbprophet` via [anaconda](https://anaconda.org/conda-forge/fbprophet) or via [pip](https://pypi.org/project/fbprophet/)
 ```Python
   pip install fbprophet
   conda install -c conda-forge fbprophet
