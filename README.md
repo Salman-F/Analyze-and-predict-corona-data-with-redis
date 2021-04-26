@@ -9,7 +9,9 @@ Analyze and predict corona data with redis and machine learning name is a `unive
 ` the work with a redis db` to ` analyze and forecast corona data`.
 
 This project demonstrates how to work with a database and analyse the data using different algorithms (including the `SARIMA machine learning algorithm`).
+
 It should be noted that this project mainly deals with the work of the `redis database` and that working with machine learning algorithms has been tested for the first time.
+
 If you have any suggestions for improvement, please feel free to contact me.
 
 ## Prerequisites
@@ -19,7 +21,7 @@ Before you begin, ensure you have met the following requirements:
 * To do so you can try `pip install -r requirements.txt`
 
 
-## Installing <project_name>
+## Installing Analyze and predict corona data with redis and machine learning
 
 To install Analyze and predict corona data with redis and machine learning, follow these steps:
 ```
