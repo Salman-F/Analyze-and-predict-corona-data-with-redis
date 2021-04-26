@@ -17,13 +17,13 @@ If you have any suggestions for improvement, please feel free to contact me.
 
 Before you begin, ensure you have met the following requirements:
 * You have installed redis on your machine. 
-* You can also run a docker container on your [machine](https://phoenixnap.com/kb/docker-redis) or [raspberryPi](https://thisdavej.com/how-to-install-redis-on-a-raspberry-pi-using-docker/)
+* Another option is to run a docker container on your [machine](https://phoenixnap.com/kb/docker-redis) or [raspberryPi](https://thisdavej.com/how-to-install-redis-on-a-raspberry-pi-using-docker/)
 * You have installed the requiered libaries listed in src\requirements.txt
 * To do so you can try `pip install -r requirements.txt`
-* It is recommended to install [fbprophet](https://anaconda.org/conda-forge/fbprophet) via anaconda or via [pip](https://pypi.org/project/fbprophet/)
+* It is recommended to install fbprophet via [anaconda](https://anaconda.org/conda-forge/fbprophet) or via [pip](https://pypi.org/project/fbprophet/)
 ```Python
-pip install fbprophet
-conda install -c conda-forge fbprophet
+  pip install fbprophet
+  conda install -c conda-forge fbprophet
 ```
 * This project was tested on python==3.8.0 and it is recommended to use this version
 
@@ -31,22 +31,30 @@ conda install -c conda-forge fbprophet
 ## Installing Analyze and predict corona data with redis and machine learning
 
 To install Analyze and predict corona data with redis and machine learning, follow these steps:
-```
+
 * Download this repository
 * Unzip the downloaded file
-```
+
 
 ## Using Analyze and predict corona data with redis and machine learning
 
 To use Analyze and predict corona data with redis and machine learning, follow these steps:
 
+
+* Start your redis docker container or server.
+* Change the parameters creating a RedisClient object to the specific information of your redis server.
+![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/connectRedis.png)
+```Python
+    try:
+        redisDB = RedisClient(_state=state, _redisHost=(localhost or IP), _redisPort="6379"(most likely), _redisPw=(yourRedisPW))
+    except Exception as generalError:
+        print(f"Somethin went wrong connecting to redis: {generalError}")
+        return
 ```
-Start your redis docker container or server.
-Change the parameters in RedisClient.py to the specific information of your redis server.
-Start a terminal within the src folder of this project.
-Type the following command in your teminal with the parameters you want to use.
-Further explanation is given underneath.
-```
+* Start a terminal within the src folder of this project.
+* Type the following command in your teminal with the parameters you want to use.
+* Further explanation is given underneath.
+
 ```
 C:\src>python main.py arg1 arg2 arg3 arg4
 
@@ -55,16 +63,16 @@ arg2: showAnalyzedData    (Default = True)
 arg3: showForecastPlots   (Default = True)
 arg4: prophetIncluded     (Default = True)
 ```
-```
+
 You can also change the values in your IDE. Therfore open the main.py file.
 Change the parameters shown in the picture below to your liking.
-..* FutureCast --> Describes the amount of days forecast methods should predict.
-..* showAnalyzedData --> Is True or False and decides, if plots regarding analyzing 
+* FutureCast --> Describes the amount of days forecast methods should predict.
+* showAnalyzedData --> Is True or False and decides, if plots regarding analyzing 
                           corona data should be shown.
-..* showForecastPlots --> Is True or False and decides, if plots regarding forecast of 
+* showForecastPlots --> Is True or False and decides, if plots regarding forecast of 
                           corona data should be shown.
-..* prophetIncluded --> Decides if the fbProphet algorithm is executed or not.
-```
+* prophetIncluded --> Decides if the fbProphet algorithm is executed or not.
+
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/userOptions.png)
 
 
