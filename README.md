@@ -6,37 +6,35 @@
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
 
 Analyze and predict corona data with redis and machine learning name is a `university project ` that allows
-` the work with a redis db` to do ` analyze and forecast corona data`.
+` the work with a redis db` to ` analyze and forecast corona data`.
 
-Additional line of information text about what the project does. Your introduction should be around 2 or 3 sentences. Don't go overboard, people won't read it.
+This project demonstrates how to work with a database and analyse the data using different algorithms (including the `SARIMA machine learning algorithm`).
+It should be noted that this project mainly deals with the work of the `redis database` and that working with machine learning algorithms has been tested for the first time.
+If you have any suggestions for improvement, please feel free to contact me.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-<!--- These are just example requirements. Add, duplicate or remove as required --->
-* You have installed the latest version of `<coding_language/dependency/requirement_1>`
-* You have a `<Windows/Linux/Mac>` machine. State which OS is supported/which is not.
-* You have read `<guide/link/documentation_related_to_project>`.
+* You have installed the requiered libaries listed in src\requirements.txt
+* To do so you can try `pip install -r requirements.txt`
+
 
 ## Installing <project_name>
 
-To install <project_name>, follow these steps:
+To install Analyze and predict corona data with redis and machine learning, follow these steps:
+```
+..* Download this repository
+..* Unzip the downloaded file
+```
 
-Linux and macOS:
-```
-<install_command>
-```
-
-Windows:
-```
-<install_command>
-```
 ## Using Analyze and predict corona data with redis and machine learning
 
 To use Analyze and predict corona data with redis and machine learning, follow these steps:
 
 ```
-Start the main.py folder within a Terminal
+Start a terminal within the src folder of this project.
+Type the following command in your teminal with the parameters you want to use.
+Further explanation is given underneath.
 ```
 ```
 C:\src>python main.py arg1 arg2 arg3 arg4
