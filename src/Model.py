@@ -1,5 +1,5 @@
 """Model
-    Contains the model class needed for the MVC model
+    * Contains the model class needed for the MVC model
     
     Attributes:
         * name: SALFIC
@@ -17,7 +17,7 @@ class ModelMVC():
 
     def fillValues(self):
         """fillValues
-            Fills the dictionary with the wished value
+            * Fills the dictionary with the wished value
         """
         self.values = {"Brandenburg" : "DE-BB", "Berlin":"DE-BE", "Baden-Württemberg":"DE-BW", "Bayern":"DE-BY", "Bremen":"DE-HB",
                     "Hessen":"DE-HE", "Hamburg":"DE-HH", "Mecklenburg-Vorprommen":"DE-MV", "Niedersachsen":"DE-NI",
@@ -26,7 +26,7 @@ class ModelMVC():
     
     def getValues(self):
         """getValues
-            Returns the values that should be shown
+            * Returns the values that should be shown
 
         Returns:
             dict: Contains the information to show in the view

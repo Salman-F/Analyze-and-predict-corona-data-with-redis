@@ -1,5 +1,5 @@
 """Controller
-    Contains the Controller class needed for the MVC model
+    * Contains the Controller class needed for the MVC model
     
     Attributes:
         * name: SALFIC
@@ -13,7 +13,7 @@ from tkinter import *
 
 class ControllerMVC():
     """ControllerMVC
-        Controlls the model and the view
+        * Controlls the model and the view
     """
     def __init__(self):
         """Initits the model and view needed for the controller
@@ -24,7 +24,7 @@ class ControllerMVC():
 
     def run(self):
         """run
-            Controls the shown frame and the data of the model
+            * Controls the shown frame and the data of the model
         Returns:
             str: Contains the state the user wants to analyze the corona data from
         """
