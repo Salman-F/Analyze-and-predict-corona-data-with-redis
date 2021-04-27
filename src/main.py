@@ -94,22 +94,10 @@ def main(args):
         # To prevent overlaping of titels
         plt.tight_layout()
         plt.show()
-    
-    os.system('cls' if os.name == 'nt' else 'clear')
-    ########################################Test Section
-    ####################################################
-    abstractUnittestObj = TestAbstractForecast(sarimaObj)
-    abstractUnittestObj.testZeroToNan()
-    abstractUnittestObj.testExtensionOrgData(redisDB.getRedisData(), FutureCast)
-
-    redisCliUnittestObj = TestRedisClient(redisDB)
-    redisCliUnittestObj.testFillingDatabase()
-    redisCliUnittestObj.testPreprocessing()
-    redisCliUnittestObj.testGetRedisData()
-    ####################################################
-    ####################################################
+        
     redisDB.flushDB()
 
 if __name__ == "__main__":
+    os.system('cls' if os.name == 'nt' else 'clear')
     args = sys.argv[1:]
     main(args)
