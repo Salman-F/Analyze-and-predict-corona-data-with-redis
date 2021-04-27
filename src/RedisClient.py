@@ -84,7 +84,7 @@ class RedisClient():
             #queue.enqueue(fillEachDate,args=(row, self.redisHost, self.redisPort, self.redisPw),ttl=120)
             keys = row.keys()
             data = {key: row[key] for key in keys[1:]}
-            self.redClient.hmset(str(row[0]), data)
+            self.redClient.hset(str(row[0]), mapping=data)
 
     def csvPreprocessing(self, df):
         """csvPreprocessing
