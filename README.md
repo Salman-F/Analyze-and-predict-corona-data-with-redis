@@ -75,6 +75,12 @@ Change the parameters shown in the picture below to your liking.
 
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/userOptions.png)
 
+## Possible Output
+
+| Analyzed Corona Data | FBProphet forecast | Other forecast methods  |
+| ------------- |:-------------:| -----:|
+| ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/analyzeCoronaData.png) | ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/fbProphetForecast.png)      |    ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/forecastingCoronaData.png) |
+
 
 
 ## Contributing to Analyze and predict corona data with redis and machine learning
