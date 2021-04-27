@@ -4,13 +4,11 @@
     
     Attributes:
         * name: SALFIC
-        * date: 24.04.2021
+        * date: 27.04.2021
         * version: 0.0.1 Beta- free
         
 TODO:
     * Put data in redis server with queue // In work... Not Possible
-    * build prophet     //Done -- suppress loginfo 
-    * Read me
 """
 from RedisClient import *
 from ProphetForecast import *
@@ -19,9 +17,9 @@ from SARIMAForecast import *
 from Controller import *
 from HoltWitnersForecast import *
 from AnalyzeCoronaData import *
-import matplotlib.pyplot as plt
 from unittestsAbstractForecast import *
 from unittestsRedisClient import *
+import matplotlib.pyplot as plt
 import os
 import sys
 
@@ -42,7 +40,6 @@ def main(args):
         showAnalyzedData = True
         showForecastPlots = True
         prophetIncluded = True
-
     ############################################################
     ############################################################
     

@@ -81,8 +81,8 @@ class AbstractForecast(ABC):
             * Sets the Figure Titel and creates daterange to match the addetional days given by the forecast algorithm.
             * After all plots are created the main function calls plt.show() to display them
         """
-        #plot = plt.figure()
-        plt.get_current_fig_manager().canvas.set_window_title("Forecasting methods")
+
+        plt.get_current_fig_manager().canvas.set_window_title("Forecasting corona data")
         # Create date values for the complete data including the forecastet data
         dateAxes = pd.date_range(start=self.redisData["date"][0], periods=len(self.redisData)+self.future, freq='D')       
         ax[subplotNumber].set_title(self.titel)
