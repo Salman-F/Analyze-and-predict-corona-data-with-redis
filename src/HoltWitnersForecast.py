@@ -1,4 +1,4 @@
-"""HoltWitnersForecast
+"""HoltWintersForecast
     * Holt Winter's Exponential Smoothing machine learning algorithm to forecast corona cases.
     
     Attributes:
@@ -8,6 +8,8 @@
 """
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import numpy as np
+import warnings
+from statsmodels.tools.sm_exceptions import ConvergenceWarning
 from AbstractForecast import *
 
 class HWForecast(AbstractForecast):
@@ -23,6 +25,10 @@ class HWForecast(AbstractForecast):
             * Therfore a numpyArray containing all y values is created and taken to create the model.
             * The result is stored in the class variable: result.
         """
+        # Common issue with Holt Winters Exponential Smoothing
+        warnings.simplefilter("ignore", ConvergenceWarning)
+        warnings.simplefilter("ignore", FutureWarning)
+
         lenOfData = len(self.redisData.index)
         npArray = np.empty(shape=(1,lenOfData), dtype=int)
         # Iterate through the fetched redisData and filter all values
