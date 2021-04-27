@@ -9,6 +9,7 @@
 import unittest
 import numpy as np
 import pandas as pd
+from RedisClient import *
 
 class TestRedisClient(unittest.TestCase):
     """TestRedisClient
@@ -17,14 +18,15 @@ class TestRedisClient(unittest.TestCase):
     Args:
         unittest (unittest): Inherits from unittest to contain all functionaliities
     """
-    def __init__(self, redisClient):
-        """Inits TestRedisClient
+    def setUp(self):
+        """setUp
             * stores RedisClient Object in parameter
-
-        Args:
-            redisClient (RedisClient): Contains every functionality regarding redis db
         """
-        self.redisCli = redisClient
+        self.redisCli = RedisClient()
+        # Clear and fill database to avoid wrong values
+        self.redisCli.flushDB()
+        self.redisCli.fillRedisDatabase()
+        # Database should be filled
         self.originalData = self.fetchOriginalData()
 
     def testFillingDatabase(self):
@@ -33,10 +35,6 @@ class TestRedisClient(unittest.TestCase):
             * Requirement is that this instance of redis db is just used for this purpose
         """
         # If database is filled sucessfully it contains as many keys as days recorded
-        # Flush Databsae for correct test
-        self.redisCli.flushDB()
-        self.redisCli.fillRedisDatabase()
-        # Database should be filled
 
         orgDataFrame = self.fetchOriginalData()
 
@@ -100,3 +98,6 @@ class TestRedisClient(unittest.TestCase):
             raise Exception(urlError)
         
         return df
+    
+if __name__ == "__main__":
+    unittest.main()
