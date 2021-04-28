@@ -83,8 +83,15 @@ Change the parameters shown in the picture below to your liking.
 | ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/analyzeCoronaData.png) | ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/fbProphetForecast.png)      |    ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/forecastingCoronaData.png) |
 
 ## Run Unittests
-* You can find some test files in src directory
-* To use them just run the specific File and information should be printed in the terminal (see example underneath)
+* All unittest will be executed automatically at the end of the program
+* If you want to run them seperately you find some test files in src directory
+* To use them seperately add at the end of the file
+
+```Python
+if __name__ == '__main__':
+    unittest.main()
+```
+* Now you can run the specific File and information should be printed in the terminal (see example underneath)
 
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/unittestExample.png)
 
