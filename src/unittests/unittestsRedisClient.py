@@ -43,7 +43,7 @@ class TestRedisClient(unittest.TestCase):
         numberOfDates = orgDataFrame.size
 
         self.assertNotEqual(lengthOfKeys, numberOfDates)
-        print("Filling of database passes successfully!")
+        print("Filling of database passed successfully!")
 
     def testPreprocessing(self):
         """testPreprocessing
@@ -80,7 +80,7 @@ class TestRedisClient(unittest.TestCase):
         ret = dateIndex.is_monotonic_increasing
 
         self.assertTrue(ret)
-        print("Getting data form redis passes successfully!")
+        print("Getting data form redis passed successfully!")
 
     def fetchOriginalData(self):
         """fetchOriginalData

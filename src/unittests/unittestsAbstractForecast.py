@@ -52,7 +52,7 @@ class TestAbstractForecast(unittest.TestCase):
         totalLength = orgData.size + futureVal
         returnedLength = len(self.AbstractForecastObj.extendOrgData(orgData))
         self.assertEqual(totalLength, returnedLength)
-        print("Extending original data passes successfully!")
+        print("Extending original data passed successfully!")
         
     def run(self):
         self.testZeroToNan()
