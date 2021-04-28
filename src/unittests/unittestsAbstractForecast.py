@@ -18,8 +18,8 @@ class TestAbstractForecast(unittest.TestCase):
     Args:
         unittest (unittest): Inherits from unittest to contain all functionaliities
     """
-    def setUp(self):
-        """setUp
+    def __init__(self):
+        """Inits Test class
             * Because AbstractForecast is a abstract class and the SARIMAObj is inherited from it
                 this object can be used to test the implemented function
         """
@@ -54,5 +54,6 @@ class TestAbstractForecast(unittest.TestCase):
         self.assertEqual(totalLength, returnedLength)
         print("Extending original data passes successfully!")
         
-if __name__ == "__main__":
-    unittest.main()
+    def run(self):
+        self.testZeroToNan()
+        self.testExtensionOrgData()

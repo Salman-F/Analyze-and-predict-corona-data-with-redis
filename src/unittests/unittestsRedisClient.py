@@ -18,8 +18,8 @@ class TestRedisClient(unittest.TestCase):
     Args:
         unittest (unittest): Inherits from unittest to contain all functionaliities
     """
-    def setUp(self):
-        """setUp
+    def __init__(self):
+        """Inits Test class
             * stores RedisClient Object in parameter
         """
         self.redisCli = RedisClient()
@@ -99,5 +99,7 @@ class TestRedisClient(unittest.TestCase):
         
         return df
     
-if __name__ == "__main__":
-    unittest.main()
+    def run(self):
+        self.testFillingDatabase()
+        self.testPreprocessing()
+        self.testGetRedisData()
