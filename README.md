@@ -43,6 +43,7 @@ To use Analyze and predict corona data with redis and machine learning, follow t
 
 * Start your redis docker container or server.
 * Change the parameters creating a RedisClient object to the specific information of your redis server.
+ 
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/connectRedis.png)
 ```Python
     try:
@@ -78,12 +79,13 @@ Change the parameters shown in the picture below to your liking.
 ## Possible Output
 
 | Analyzed Corona Data | FBProphet forecast | Other forecast methods  |
-| ------------- |:-------------:| -----:|
+| :-------------: |:-------------:| :-----:|
 | ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/analyzeCoronaData.png) | ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/fbProphetForecast.png)      |    ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/forecastingCoronaData.png) |
 
 ## Run Unittests
 * You can find some test files in src directory
 * To use them just run the specific File and information should be printed in the terminal (see example underneath)
+
 ![userChoice](https://github.com/Salman-F/Analyze-and-predict-corona-data-with-redis/blob/main/images/unittestExample.png)
 
 ## Contributing to Analyze and predict corona data with redis and machine learning
