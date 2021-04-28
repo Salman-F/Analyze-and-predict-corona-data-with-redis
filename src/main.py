@@ -17,8 +17,8 @@ from SARIMAForecast import *
 from Controller import *
 from HoltWitnersForecast import *
 from AnalyzeCoronaData import *
-from unittestsAbstractForecast import *
-from unittestsRedisClient import *
+from unittests.unittestsAbstractForecast import *
+from unittests.unittestsRedisClient import *
 import matplotlib.pyplot as plt
 import os
 import sys
@@ -95,6 +95,14 @@ def main(args):
         plt.tight_layout()
         plt.show()
         
+    ###########################################Unittests Section
+    ############################################################  
+    testAbstractFr = TestAbstractForecast()
+    testAbstractFr.run()
+    testRedisCli = TestRedisClient()
+    testRedisCli.run()
+    ############################################################
+    ############################################################ 
     redisDB.flushDB()
 
 if __name__ == "__main__":
