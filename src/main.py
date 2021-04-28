@@ -20,8 +20,6 @@ from AnalyzeCoronaData import *
 from unittests.unittestsAbstractForecast import *
 from unittests.unittestsRedisClient import *
 import matplotlib.pyplot as plt
-import os
-import sys
 
 def main(args):
     """main
@@ -106,6 +104,5 @@ def main(args):
     redisDB.flushDB()
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')
     args = sys.argv[1:]
     main(args)
