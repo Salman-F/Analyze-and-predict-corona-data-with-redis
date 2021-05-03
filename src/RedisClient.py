@@ -78,11 +78,12 @@ class RedisClient():
             raise Exception(urlError)
         df = self.csvPreprocessing(df)
         # Creating RQ Queue
-        #TODO
+        #
         #queue = Queue(connection=self.redClient)
+        keys = df.keys()
         for i,row in df.iterrows():
             #queue.enqueue(fillEachDate,args=(row, self.redisHost, self.redisPort, self.redisPw),ttl=120)
-            keys = row.keys()
+            #keys = row.keys()
             data = {key: row[key] for key in keys[1:]}
             self.redClient.hset(str(row[0]), mapping=data)
 

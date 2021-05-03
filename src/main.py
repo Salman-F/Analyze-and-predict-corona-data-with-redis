@@ -4,7 +4,7 @@
     
     Attributes:
         * name: SALFIC
-        * date: 27.04.2021
+        * date: 30.04.2021
         * version: 0.0.1 Beta- free
         
 TODO:
@@ -15,7 +15,7 @@ from ProphetForecast import *
 from FourierForecast import *
 from SARIMAForecast import *
 from Controller import *
-from HoltWitnersForecast import *
+from HoltWintersForecast import *
 from AnalyzeCoronaData import *
 from unittests.unittestsAbstractForecast import *
 from unittests.unittestsRedisClient import *
@@ -101,7 +101,7 @@ def main(args):
     testRedisCli.run()
     ############################################################
     ############################################################ 
-    redisDB.flushDB()
+    #redisDB.flushDB()
 
 if __name__ == "__main__":
     args = sys.argv[1:]
