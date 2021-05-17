@@ -20,6 +20,7 @@ from AnalyzeCoronaData import *
 from unittests.unittestsAbstractForecast import *
 from unittests.unittestsRedisClient import *
 import matplotlib.pyplot as plt
+import sys
 
 def main(args):
     """main

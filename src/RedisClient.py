@@ -75,7 +75,8 @@ class RedisClient():
         try:
             df = pd.read_csv(self.url)
         except Exception as urlError:
-            raise Exception(urlError)
+            # If URL downst work we take an saved csv from 17.05.2021
+            df  =pd.read_csv("cases-rki-by-state.csv")
         df = self.csvPreprocessing(df)
         # Creating RQ Queue
         #
